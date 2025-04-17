@@ -5,7 +5,8 @@ namespace UserManagement.Repositories
 {
     public static class JsonUserStorage
     {
-        private const string FilePath = "App_Data/Users.json";
+        private static readonly string FilePath = Path.Combine(Directory.GetCurrentDirectory(), "App_Data", "Users.json");
+
 
         public static List<User> LoadUsers()
         {
@@ -26,6 +27,8 @@ namespace UserManagement.Repositories
                     Users = users
                 };
                 var jsonData = JsonConvert.SerializeObject(wrapper, Newtonsoft.Json.Formatting.Indented);
+                Console.WriteLine($"File Path: {FilePath}");
+
                 File.WriteAllText(FilePath, jsonData);
             }
             catch (Exception ex)
