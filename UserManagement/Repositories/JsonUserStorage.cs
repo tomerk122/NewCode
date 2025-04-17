@@ -36,7 +36,7 @@ namespace UserManagement.Repositories
 
         private class UserWrapper
         {
-            public List<User> Users { get; set; }
+            public List<User> Users { get; set; } = new List<User>();
         }
     }
 

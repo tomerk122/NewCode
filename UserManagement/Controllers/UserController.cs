@@ -85,7 +85,7 @@ namespace UserManagement.Controllers
         #region Create & view
 
         [BindProperty]
-        public User newUser { get; set; }
+        public User newUser { get; set; }= new User();
 
         public IActionResult Create()
         {
@@ -120,7 +120,7 @@ namespace UserManagement.Controllers
         #region Update Users
 
         [BindProperty]
-        public User UserToUpdate { get; set; }
+        public User UserToUpdate { get; set; } = new User();
 
         public IActionResult Update()
         {

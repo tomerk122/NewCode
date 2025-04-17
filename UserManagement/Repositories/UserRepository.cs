@@ -18,7 +18,7 @@ namespace UserManagement.Repositories
             _cachedUsers = JsonUserStorage.LoadUsers();
         }
 
-        public static User GetUserById(int userId)
+        public static User? GetUserById(int userId) // can be null, so in the function we will check if it is null
         {
             return _cachedUsers.FirstOrDefault(user => user.UserId == userId);
         }
@@ -29,25 +29,11 @@ namespace UserManagement.Repositories
             return _cachedUsers;
         }
 
-        public static List<User> LoadUsersFromFile()
-        {
-            if (!File.Exists(FilePath))
-            {
-                return new List<User>();
-            }
-            var jsonData = File.ReadAllText(FilePath);
-
-            var wrapper = JsonConvert.DeserializeObject<UserWrapper>(jsonData);
-            return wrapper?.Users ?? new List<User>();
-        }
-        private class UserWrapper
-        {
-            public List<User> Users { get; set; }
-        }
+      
 
         public static void RefreshCache()
         {
-            _cachedUsers = LoadUsersFromFile();
+            _cachedUsers = JsonUserStorage.LoadUsers();
         }
 
 
@@ -64,7 +50,7 @@ namespace UserManagement.Repositories
                 SaveUsers(); // Update file after cache change
             }
         }
-        public static bool CheckUserName(string userName)
+        public static bool CheckUserName(string userName) // if the username exists in the list
         {
 
             return _cachedUsers.Any(user =>
