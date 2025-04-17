@@ -1,6 +1,42 @@
 ﻿@model UserManagement.Models.User
 <div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
-    <h2>Update New User</h2>
+    <style>
+        /* Sidebar Styling */
+        .sidebar {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            /* Button Styling */
+            .sidebar button {
+                width: 200px;
+                background-color: #008CBA;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+                .sidebar button:hover {
+                    opacity: 0.9;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                }
+    </style>
+
+    <div class="sidebar">
+        <form method="get" action="/User/Index">
+            <button type="submit">Back to Home</button>
+        </form>
+    </div>
+   <h2>Update New User</h2>
 
     <form method="post" asp-action="UpdatePost">
         <!-- First Name -->
