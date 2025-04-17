@@ -1,0 +1,74 @@
+{
+  "Users": [
+    {
+      "UserId": 2,
+      "UserName": "Beti",
+      "Password": "22222",
+      "Active": true,
+      "UserGroupId": null,
+      "Data": {
+        "Phone": "0525700231",
+        "Email": "beti@gmail.com",
+        "FirstName": "Beti",
+        "LastName": "Cohen",
+        "CreationDate": "2024-01-25"
+      }
+    },
+    {
+      "UserId": 3,
+      "UserName": "CharliBrown",
+      "Password": "33333333",
+      "Active": true,
+      "UserGroupId": 4,
+      "Data": {
+        "Phone": "0503121243",
+        "Email": "CharliBrown@gmail.com",
+        "FirstName": "Charli",
+        "LastName": "Brown",
+        "CreationDate": "2023-05-17"
+      }
+    },
+    {
+      "UserId": 4,
+      "UserName": "DanielaDanon",
+      "Password": "ab!44",
+      "Active": true,
+      "UserGroupId": 2,
+      "Data": {
+        "Phone": "",
+        "Email": "Daniela@gmail.com",
+        "FirstName": "Daniela",
+        "LastName": "Danon",
+        "CreationDate": "2022-11-05"
+      }
+    },
+    {
+      "UserId": 1,
+      "UserName": "Alon",
+      "Password": "1111",
+      "Active": false,
+      "UserGroupId": null,
+      "Data": {
+        "Phone": "0525716539",
+        "Email": "Alon@gmail.com",
+        "FirstName": "Alon2",
+        "LastName": "Cohen",
+        "CreationDate": "2024-01-01"
+      }
+    },
+    {
+      "UserId": 5,
+      "UserName": "oewqwiewq",
+      "Password": "123123",
+      "Active": true,
+      "UserGroupId": 1,
+      "Data": {
+        "Phone": "123131",
+        "Email": "weoqwe@woeq.com",
+        "FirstName": "TomerPro",
+        "LastName": "TOerew",
+        "CreationDate": "2025-04-17"
+      }
+    }
+  ]
+}
