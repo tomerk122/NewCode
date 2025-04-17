@@ -1,7 +1,20 @@
 ﻿# User Management System
 
-This is a simple User Management System that allows managing users, including functionality for adding, updating, deleting, and searching users. The data is stored in a JSON file and cached for performance reasons.
+A simple ASP.NET Core MVC application for managing users with support for creating, reading, updating, and deleting user records. The data is stored in a JSON file and cached for performance.
 
+
+## Project Structure
+
+- **Models**: Contains the `User` and `UserData` classes defining data structure
+- **Controllers**: 
+  - `HomeController`: Handles the homepage
+  - `UserController`: Manages all user-related operations
+- **Repositories**:
+  - `UserRepository`: Business logic for user management
+  - `JsonUserStorage`: Handles JSON file operations
+	- `UserCache`: Caches user data for performance
+- **Views**: Razor views for presenting the user interface
+- 
 ## Features
 
 - **View all users**: Displays all users in the system.
@@ -11,5 +24,3 @@ This is a simple User Management System that allows managing users, including fu
 - **Search users**: Search users by username, email, or phone.
 - **Filter by status**: Filter users by their active/inactive status.
 
-## Project logic:
-- User model: Defines the structure of a user object.
