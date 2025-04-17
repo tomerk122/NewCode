@@ -14,7 +14,7 @@ A simple ASP.NET Core MVC application for managing users with support for creati
   - `JsonUserStorage`: Handles JSON file operations
 	- `UserCache`: Caches user data for performance
 - **Views**: Razor views for presenting the user interface
-- 
+
 ## Features
 
 - **View all users**: Displays all users in the system.
