@@ -27,8 +27,6 @@ namespace UserManagement.Repositories
                     Users = users
                 };
                 var jsonData = JsonConvert.SerializeObject(wrapper, Newtonsoft.Json.Formatting.Indented);
-                Console.WriteLine($"File Path: {FilePath}");
-
                 File.WriteAllText(FilePath, jsonData);
             }
             catch (Exception ex)
