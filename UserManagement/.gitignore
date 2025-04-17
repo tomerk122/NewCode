@@ -7,7 +7,7 @@ bin/
 obj/
 
 # Publish folders
-App_Data/
+
 .publish/
 Logs/
 
