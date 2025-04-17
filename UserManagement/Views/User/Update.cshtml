@@ -1,0 +1,78 @@
+﻿@model UserManagement.Models.User
+<div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+    <h2>Update New User</h2>
+
+    <form method="post" asp-action="UpdatePost">
+        <!-- First Name -->
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Data.FirstName">First Name:</label><br />
+            <input asp-for="Data.FirstName" class="form-control" pattern="[A-Za-z0-9]*"
+                   style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
+            <span asp-validation-for="Data.FirstName" style="color: red;"></span>
+        </div>
+
+        <!-- Last Name -->
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Data.LastName">Last Name:</label><br />
+            <input asp-for="Data.LastName" class="form-control" pattern="[A-Za-z0-9]*"
+                   style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
+            <span asp-validation-for="Data.LastName" style="color: red;"></span>
+        </div>
+
+        <!-- Username -->
+        <div style="margin-bottom: 10px;">
+            <label asp-for="UserName">Username:</label><br />
+            <input asp-for="UserName" class="form-control" pattern="[A-Za-z0-9]*"
+                   style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
+            <span asp-validation-for="UserName" style="color: red;"></span>
+        </div>
+
+        <!-- Password -->
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Password">Password:</label><br />
+            <input asp-for="Password" type="text" class="form-control" pattern="[A-Za-z0-9]*"
+                   style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
+            <span asp-validation-for="Password" style="color: red;"></span>
+        </div>
+
+        <!-- Phone -->
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Data.Phone">Phone:</label><br />
+            <input asp-for="Data.Phone" class="form-control" pattern="[0-9]*"
+                   style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
+            <span asp-validation-for="Data.Phone" style="color: red;"></span>
+        </div>
+
+        <!-- Email -->
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Data.Email">Email:</label><br />
+            <input asp-for="Data.Email" type="email" class="form-control"
+                   style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
+            <span asp-validation-for="Data.Email" style="color: red;"></span>
+        </div>
+
+        <!-- Active Status -->
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Active">Is Active:</label><br />
+            <input asp-for="Active" type="checkbox" class="form-check-input" />
+        </div>
+
+        <!-- User Group ID -->
+        <div style="margin-bottom: 10px;">
+            <label asp-for="UserGroupId">User Group ID:</label><br />
+            <input asp-for="UserGroupId" type="number" class="form-control"
+                   style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
+            <span asp-validation-for="UserGroupId" style="color: red;"></span>
+        </div>
+
+        <!-- Creation Date (Hidden) -->
+        <input type="hidden" asp-for="Data.CreationDate" />
+
+        <input type="hidden" asp-for="UserId" />
+
+        <!-- Submit Button -->
+        <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Update User
+        </button>
+    </form>
+</div>
