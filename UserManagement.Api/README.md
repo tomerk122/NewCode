@@ -16,12 +16,6 @@ The UserManagement.API project is a web API designed for managing users. It incl
 
 ## Getting Started
 
-### Prerequisites
-
-- .NET 6.0 or later
-- SQL Server (or your preferred database)
-- Visual Studio, VS Code, or your preferred IDE
-
 ### Installation
 
 1. Clone the repository
@@ -34,12 +28,14 @@ The UserManagement.API project is a web API designed for managing users. It incl
 
 ### Generating a JWT Token
 
-To create a JWT token, send a POST request to the `api/Users/GenerateKey` endpoint with the following body:
+To create a JWT token, send a POST request to the `api/Users/GenerateToken` endpoint with the following body:
 
-```json
-{
-  "companyName": "Your Company Name"
-}
+```
+curl -X 'POST' \
+  'http://127.0.0.1:<PORT>/api/Users/GenerateToken' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '<Company-Name>'
 ```
 
 The API will return a JWT token that you can use for authentication in subsequent requests. Your IP address will also be automatically whitelisted for security purposes.
@@ -56,15 +52,12 @@ Authorization: Bearer {your_jwt_token}
 
 ### User Management
 
-- `GET api/Users` - Get all users
-- `GET api/Users/{id}` - Get user by ID
-- `POST api/Users` - Create a new user
-- `PUT api/Users/{id}` - Update an existing user
-- `DELETE api/Users/{id}` - Delete a user
+- `GET api/GetAllUsers` - Get all users
+- `GET api/Users/{Userid}` - Get user by ID
+- `POST api/Users/AddUSer` - Create a new user
+- `POST api/Users/SearchUser` - Search a user by his First Name Or last
+- `Post api/Users/GenerateToken` - Get a JWT Token from the API, An end user needs to write the company name, and then there is validation of the IP address. 
 
-### Authentication
-
-- `POST api/Users/GenerateKey` - Generate a JWT token for API authentication
 
 ## Technical Implementation Details
 
@@ -150,10 +143,10 @@ You can also interact with the API manually using tools like Postman, curl, or a
 ### Authentication Request
 ```bash
 curl -X 'POST' \
-  'http://127.0.0.1:5110/api/Users/GenerateKey' \
+  'http://127.0.0.1:5110/api/Users/GenerateToken' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
-  -d '"string"'
+  -d '<Company-Name>'
  
 ```
 
@@ -178,8 +171,12 @@ curl -X POST "http://localhost:<port>/api/Users" \
         "role": "User"
       }'
 ```
+**Remember to replace `<port>` with your actual API port and `your_jwt_token` with the token received from the GenerateToken endpoint.**
+![image](https://github.com/user-attachments/assets/250e837d-cf8e-433b-ae90-39594f7faefe)
 
-Remember to replace `<port>` with your actual API port and `your_jwt_token` with the token received from the GenerateKey endpoint.
+
+
+
 
 
 

@@ -5,8 +5,10 @@ namespace UserManagement.Api.Repositories
 {
     public static class UserRepository
     {
-        private const string FilePath = "App_Data/Users.json"; // נתיב הקובץ
+       
         private static List<User> _cachedUsers;
+        private static List<Credentials> _cachedCredentials;
+
         // loading the json evey time is not efficient, so we will load it once and cache it
         // in the static constructor
         private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
@@ -15,6 +17,7 @@ namespace UserManagement.Api.Repositories
         {
             // Initialize cache on first access
             _cachedUsers = JsonUserStorage.LoadUsers();
+            _cachedCredentials = JsonCredentialsManager.LoadCredentials();
         }
 
         public static User? GetUserById(int userId) // can be null, so in the function we will check if it is null
@@ -39,6 +42,7 @@ namespace UserManagement.Api.Repositories
         public static void RefreshCache()
         {
             _cachedUsers = JsonUserStorage.LoadUsers();
+            _cachedCredentials = JsonCredentialsManager.LoadCredentials();
         }
 
 
@@ -123,6 +127,17 @@ namespace UserManagement.Api.Repositories
             ).ToList();
         }
 
+        public static bool AuthenticateUser(string userName, string password, string company)
+        {
+            var credentials = _cachedCredentials;
+
+            var userExists = credentials.Any(cred =>
+                cred.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase) &&
+                cred.Password.Equals(password) &&
+                cred.Company.Equals(company, StringComparison.OrdinalIgnoreCase));
+
+            return userExists;
+        }
 
     }
 }

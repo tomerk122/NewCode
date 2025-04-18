@@ -1,32 +1,41 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
+using System.Net;
 using System.Text;
+using UserManagement.Api.Models.DTOS;
+using UserManagement.Api.Repositories;
+
 
 namespace UserManagement.Api.Middleware
 {
     public static class JwtValidator
     {
+        private static readonly IConfiguration Configuration;
+        private static readonly string SecretKey;
+        private static readonly string ValidIssuer;
+        private static readonly string ValidAudience;
 
-        private static readonly List<string> AllowCompanies = new List<string>
+        static JwtValidator()
         {
-            "RICHKID",
-            "Google",
-            "Microsoft",
-            "Apple",
-            "Amazon",
-            "Facebook",
+            /*
+              In a real-world production system, sensitive values like the SecretKey
+              should be stored in environment variables
+             */
+            Configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-        };
+            SecretKey = Configuration["JwtSettings:SecretKey"]!;
+            ValidIssuer = Configuration["JwtSettings:ValidIssuer"]!;
+            ValidAudience = Configuration["JwtSettings:ValidAudience"]!;
+        }
 
-        private static readonly string SecretKey = "RichKidAndTomerKey123!RichKidAndTomerKey123!";
-        private static readonly string Issuer = "UserManagement.Api";
-        private static readonly string Audience = "UserManagement.Api";
-
-
-        // in this function we are validating the JWT token by checking the signature, issuer, audience and expiration time
-        // in a real application we should save those values in a config file or environment variables
-        public static bool IsTokenValid(string token, out string? companyName)
+        /*
+         * in this function we will validate the token by checking if the credentials are valid (username, password, company)
+           only users that are in the list of users can access the system.
+         */
+        public static bool IsTokenValid(string token, out Credentials? credManager)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var validationParameters = new TokenValidationParameters
@@ -35,26 +44,31 @@ namespace UserManagement.Api.Middleware
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
-                ValidIssuer = "UserManagement.Api", 
-                ValidAudience = "UserManagement.Api", 
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretKey)), 
+                ValidIssuer = ValidIssuer,
+                ValidAudience = ValidAudience,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecretKey)),
             };
-
             try
             {
-             
-                var principal = tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
-                companyName = principal.FindFirst("Company")?.Value;
+                var principal = tokenHandler.ValidateToken(token, validationParameters, out _);
+                var credentials = new Credentials
+                {
+                    UserName = principal.FindFirst("UserName")?.Value ?? string.Empty,
+                    Password = principal.FindFirst("Password")?.Value ?? string.Empty,
+                    Company = principal.FindFirst("Company")?.Value ?? string.Empty
+                };
 
-          
-                return !string.IsNullOrEmpty(companyName) && AllowCompanies.Contains(companyName);
+                credManager = credentials;
+                return UserRepository.AuthenticateUser(credentials.UserName, credentials.Password, credentials.Company);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"JWT validation failed: {ex.Message}");
-                companyName = null;
-                return false;
+              
             }
+            credManager = null;
+            return false;
         }
+
     }
 }

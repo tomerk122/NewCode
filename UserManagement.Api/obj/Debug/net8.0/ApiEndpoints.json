@@ -43,22 +43,6 @@
   },
   {
     "ContainingType": "UserManagement.Api.Controllers.UsersController",
-    "Method": "GenerateKey",
-    "RelativePath": "api/Users/GenerateKey",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "companyName",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "UserManagement.Api.Controllers.UsersController",
     "Method": "GetAllUsers",
     "RelativePath": "api/Users/GetAllUsers",
     "HttpMethod": "GET",
@@ -76,6 +60,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "UserManagement.Api.Controllers.UsersController",
+    "Method": "GenerateToken",
+    "RelativePath": "api/Users/GetToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ManagerCred",
+        "Type": "UserManagement.Api.Models.DTOS.Credentials",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "UserManagement.Api.Controllers.UsersController",

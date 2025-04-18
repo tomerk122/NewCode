@@ -1,20 +1,6 @@
 {
   "Users": [
     {
-      "UserId": 2,
-      "UserName": "Beti",
-      "Password": "weqeq233",
-      "Active": true,
-      "UserGroupId": null,
-      "Data": {
-        "Phone": "0525700231",
-        "Email": "beti@gmail.com",
-        "FirstName": "Beti",
-        "LastName": "Cohen",
-        "CreationDate": "2024-01-25"
-      }
-    },
-    {
       "UserId": 3,
       "UserName": "CharliBrown",
       "Password": "33333333",
@@ -47,7 +33,7 @@
       "UserName": "Alon",
       "Password": "1311",
       "Active": false,
-      "UserGroupId": null,
+      "UserGroupId": 3,
       "Data": {
         "Phone": "0525716539",
         "Email": "Alon@gmail.com",

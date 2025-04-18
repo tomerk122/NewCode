@@ -8,8 +8,6 @@ namespace UserManagement.Controllers
     {
         #region Load Users & index
 
-      
-
         public IActionResult Index()
         {
             var users = UserRepository.GetCachedUsers();
@@ -108,7 +106,7 @@ namespace UserManagement.Controllers
             }
             catch (Exception ex)
             {
-                SetErrorMessage($"Error deleting user: {ex.Message}");
+                SetErrorMessage($"Error created user: you need a {ex.Message}");
             }
             return RedirectToAction("Index");
         }
@@ -150,7 +148,7 @@ namespace UserManagement.Controllers
             try
             {
                 UserRepository.UpdateUser(UserToUpdate);
-                SetSuccessMessage("User created successfully!");
+                SetSuccessMessage("User Updated successfully!");
             }
             catch (Exception ex)
             {

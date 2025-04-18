@@ -92,17 +92,36 @@ namespace UserManagement.Api.Controllers
             }
            
         }
-        [HttpPost("GenerateKey")]
+       
+        [HttpPost("GetToken")]
         [AllowAnonymous]
-        public IActionResult GenerateKey([FromBody] string companyName)
+        public IActionResult GenerateToken([FromBody] Credentials ManagerCred)
         {
-            if (string.IsNullOrEmpty(companyName))
+            try
             {
-                return BadRequest("Company name cannot be null or empty.");
-            }
+                var validationErrors = DtoValidator.ValidateCredentialsDto(ManagerCred);
+                if(validationErrors.Count > 0)
+                {
+                    return BadRequest($"Validation failed: {string.Join(", ", validationErrors)}");
+                }
+                var credentials =UserRepository.AuthenticateUser(ManagerCred.UserName, ManagerCred.Password, ManagerCred.Company);
+                if(!credentials)
+                {
+                    return Unauthorized("Invalid credentials.");
+                }
 
-            var token = JwtTokenGenerator.GenerateToken(companyName);
-            return Ok(new { Token = token });
+                var token = JwtTokenGenerator.GenerateToken(ManagerCred);
+                return Ok(new { Token = token });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"Validation failed: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error generating token: {ex.Message}");
+            }
+           
         }
 
 

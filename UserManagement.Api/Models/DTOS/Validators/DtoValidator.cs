@@ -41,5 +41,28 @@
             return errors;
         }
 
+
+        public static List<string> ValidateCredentialsDto(Credentials credtDto)
+        {
+            var errors = new List<string>();
+
+            if (string.IsNullOrWhiteSpace(credtDto.UserName))
+            {
+                errors.Add("UserName cannot be null or empty.");
+            }
+
+            if (string.IsNullOrWhiteSpace(credtDto.Password))
+            {
+                errors.Add("Password cannot be null or empty.");
+            }
+
+            if (string.IsNullOrWhiteSpace(credtDto.Company))
+            {
+                errors.Add("Company cannot be null or empty.");
+            }
+
+
+            return errors;
+        }
     }
 }

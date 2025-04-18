@@ -7,7 +7,6 @@ namespace UserManagement.Repositories
 {
     public static class UserRepository
     {
-        private const string FilePath = "App_Data/Users.json"; // נתיב הקובץ
         private static List<User> _cachedUsers;
         // loading the json evey time is not efficient, so we will load it once and cache it
         // in the static constructor
