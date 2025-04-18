@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+
 namespace UserManagement.Repositories
 {
     public static class UserRepository

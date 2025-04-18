@@ -3,11 +3,9 @@ using UserManagement.Models;
 
 namespace UserManagement.Repositories
 {
-    public static class JsonUserStorage
+    internal static class JsonUserStorage
     {
         private static readonly string FilePath = Path.Combine(Directory.GetCurrentDirectory(), "App_Data", "Users.json");
-
-
         public static List<User> LoadUsers()
         {
             if (!File.Exists(FilePath))
@@ -35,7 +33,7 @@ namespace UserManagement.Repositories
             }
         }
 
-        private class UserWrapper
+        private class UserWrapper // wraopper class for the list of users (from the json)
         {
             public List<User> Users { get; set; } = new List<User>();
         }
