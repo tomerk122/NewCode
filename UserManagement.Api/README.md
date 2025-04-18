@@ -52,15 +52,12 @@ Authorization: Bearer {your_jwt_token}
 
 ### User Management
 
-- `GET api/Users` - Get all users
-- `GET api/Users/{id}` - Get user by ID
-- `POST api/Users` - Create a new user
-- `PUT api/Users/{id}` - Update an existing user
-- `DELETE api/Users/{id}` - Delete a user
+- `GET api/GetAllUsers` - Get all users
+- `GET api/Users/{Userid}` - Get user by ID
+- `POST api/Users/AddUSer` - Create a new user
+- `POST api/Users/SearchUser` - Search a user by his First Name Or last
+- `Post api/Users/GenerateKey` - Get a JWT Token from the API, An end user needs to write the company name, and then there is validation of the IP address. 
 
-### Authentication
-
-- `POST api/Users/GenerateKey` - Generate a JWT token for API authentication
 
 ## Technical Implementation Details
 
