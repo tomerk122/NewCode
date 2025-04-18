@@ -64,7 +64,7 @@ namespace UserManagement.Api.Controllers
         }
 
 
-        [HttpPost("SeachUser")]
+        [HttpPost("SearchUser")]
         public ActionResult SearchUser([FromBody] SearchUserDto searchUserDto)
         {
             try
