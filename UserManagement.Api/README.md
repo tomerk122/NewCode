@@ -16,12 +16,6 @@ The UserManagement.API project is a web API designed for managing users. It incl
 
 ## Getting Started
 
-### Prerequisites
-
-- .NET 6.0 or later
-- SQL Server (or your preferred database)
-- Visual Studio, VS Code, or your preferred IDE
-
 ### Installation
 
 1. Clone the repository
@@ -36,10 +30,11 @@ The UserManagement.API project is a web API designed for managing users. It incl
 
 To create a JWT token, send a POST request to the `api/Users/GenerateKey` endpoint with the following body:
 
-```json
-{
-  "companyName": "Your Company Name"
-}
+```curl -X 'POST' \
+  'http://127.0.0.1:5110/api/Users/GenerateKey' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '<Company-Name>'
 ```
 
 The API will return a JWT token that you can use for authentication in subsequent requests. Your IP address will also be automatically whitelisted for security purposes.
@@ -153,7 +148,7 @@ curl -X 'POST' \
   'http://127.0.0.1:5110/api/Users/GenerateKey' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
-  -d '"string"'
+  -d '<Company-Name>'
  
 ```
 
