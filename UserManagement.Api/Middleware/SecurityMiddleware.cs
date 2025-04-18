@@ -41,7 +41,6 @@ namespace UserManagement.Api.Middleware
 
 
             var authorizationHeader = context.Request.Headers["Authorization"].ToString();
-            Console.WriteLine($"Incoming request from IP: {authorizationHeader}");
             if (string.IsNullOrEmpty(authorizationHeader) || !authorizationHeader.StartsWith("Bearer "))
             {
                 context.Response.StatusCode = StatusCodes.Status401Unauthorized;
