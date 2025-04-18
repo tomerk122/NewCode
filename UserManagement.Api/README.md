@@ -171,11 +171,12 @@ curl -X POST "http://localhost:<port>/api/Users" \
         "role": "User"
       }'
 ```
+**Remember to replace `<port>` with your actual API port and `your_jwt_token` with the token received from the GenerateKey endpoint.**
 ![image](https://github.com/user-attachments/assets/250e837d-cf8e-433b-ae90-39594f7faefe)
 
 
 
-Remember to replace `<port>` with your actual API port and `your_jwt_token` with the token received from the GenerateKey endpoint.
+
 
 
 
