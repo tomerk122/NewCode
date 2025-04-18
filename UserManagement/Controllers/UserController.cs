@@ -152,7 +152,7 @@ namespace UserManagement.Controllers
             }
             catch (Exception ex)
             {
-                SetErrorMessage($"Error deleting user: {ex.Message}");
+                SetErrorMessage($"Error Updated user: {ex.Message}");
 
             }
 
