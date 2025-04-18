@@ -37,6 +37,8 @@ Both applications use a JSON file-based storage system:
 - `JsonUserStorage` handles reading and writing user data to JSON files
 - Data is stored in the `App_Data/Users.json` file
 - Both applications implement a caching mechanism to improve performance
+- in the API version, we also have Json `JsonCredentialsManager.cs` for managing the credentials of the users who can access the API.
+
 
 ## User Model
 
@@ -45,6 +47,8 @@ The `User` model includes:
 - Active status flag
 - User group information
 - Personal data in the `UserData` class (FirstName, LastName, Email, Phone, CreationDate)
+- We have also in the API Dto (Data Tranfer Object) to validate the input data
+
 
 ## Documentation
 
