@@ -1,0 +1,142 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+using System.Collections.Generic;
+using UserManagement.Api.Middleware.JWT;
+using UserManagement.Api.Models;
+using UserManagement.Api.Models.DTOS;
+using UserManagement.Api.Models.DTOS.DtoValidator;
+using UserManagement.Api.Repositories;
+namespace UserManagement.Api.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UsersController : Controller
+    {
+
+
+        [HttpGet("GetAllUsers")]
+        public ActionResult<IEnumerable<User>> GetAllUsers()
+        {
+            var users = UserRepository.GetCachedUsers();
+            if (!users.Any())
+            {
+                return NotFound("No users found.");
+            }
+            return Ok(users);
+        }
+
+        [HttpGet("{userId}")]
+        public ActionResult<User> GetUserById(int userId)
+        {
+            var user = UserRepository.GetUserById(userId);
+            if (user == null)
+            {
+                return NotFound($"User with ID {userId} not found.");
+            }
+            return Ok(user);
+        }
+
+        [HttpPost("AddUser")]
+        public ActionResult CreateUser([FromBody] CreateUserDto userDto)
+        {
+            try
+            {
+                var validtionErrors = DtoValidator.ValidateCreateUserDto(userDto);
+                if (validtionErrors.Count > 0)
+                {
+                    return BadRequest($"Validation failed: {string.Join(", ", validtionErrors)}");
+                }
+
+                var newUser = ConvertToUser(userDto);
+                UserRepository.AddUser(newUser);
+
+                return CreatedAtAction(nameof(GetUserById), new { userId = newUser.UserId }, newUser);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"Validation failed: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error adding user: {ex.Message}");
+            }
+        }
+
+
+        [HttpPost("SeachUser")]
+        public ActionResult SearchUser([FromBody] SearchUserDto searchUserDto)
+        {
+            try
+            {
+                var validtionErrors = DtoValidator.ValidateSearchUserDto(searchUserDto);
+                if (validtionErrors.Count > 0)
+                {
+                    return BadRequest($"Validation failed: {string.Join(", ", validtionErrors)}");
+                }
+
+                var users = UserRepository.SearchUsersByFirstOrLastName(searchUserDto);
+                if (users == null || !users.Any())
+                {
+                    return NotFound("No users found.");
+                }
+                return Ok(users);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"Validation failed: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error searching users: {ex.Message}");
+            }
+           
+        }
+        [HttpPost("GenerateKey")]
+        [AllowAnonymous]
+        public IActionResult GenerateKey([FromBody] string companyName)
+        {
+            if (string.IsNullOrEmpty(companyName))
+            {
+                return BadRequest("Company name cannot be null or empty.");
+            }
+
+            var token = JwtTokenGenerator.GenerateToken(companyName);
+            return Ok(new { Token = token });
+        }
+
+
+
+
+
+
+        #region Private Methods
+
+
+        private User ConvertToUser(CreateUserDto dto)
+        {
+            // values are not null, so we can use the null-forgiving operator (!)
+            return new User
+            {
+                UserName = dto.UserName!,
+                Password = dto.Password!,
+                Active = dto.Active,
+                UserGroupId = dto.UserGroupId ?? 0,
+                Data = new UserData
+                {
+                    Phone = dto.Phone!,
+                    Email = dto.Email!,
+                    FirstName = dto.FirstName!,
+                    LastName = dto.LastName!,
+                    CreationDate = DateTime.Now.ToString("yyyy-MM-dd")
+                },
+            };
+        }
+        
+        
+        
+        #endregion
+
+    }
+
+}
