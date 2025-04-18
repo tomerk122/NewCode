@@ -32,7 +32,7 @@ To create a JWT token, send a POST request to the `api/Users/GenerateKey` endpoi
 
 ```
 curl -X 'POST' \
-  'http://127.0.0.1:5110/api/Users/GenerateKey' \
+  'http://127.0.0.1:<PORT>/api/Users/GenerateKey' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '<Company-Name>'
