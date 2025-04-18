@@ -23,7 +23,9 @@ namespace UserManagement.Api.Middleware
         private static readonly string Issuer = "UserManagement.Api";
         private static readonly string Audience = "UserManagement.Api";
 
-      
+
+        // in this function we are validating the JWT token by checking the signature, issuer, audience and expiration time
+        // in a real application we should save those values in a config file or environment variables
         public static bool IsTokenValid(string token, out string? companyName)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
