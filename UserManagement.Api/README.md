@@ -13,6 +13,7 @@ The UserManagement.API project is a web API designed for managing users. It incl
 - **Input Validation**: Using DTOs for request validation
 - **API Documentation**: Comprehensive Swagger documentation
 - **synchronization mechanism**: Can handle multiple users trying to use the API for our system
+- ** Credtentials**: Secure storage of authentication credentials in a JSON file (manager who can access the API)
 
 ## Getting Started
 
@@ -21,24 +22,30 @@ The UserManagement.API project is a web API designed for managing users. It incl
 1. Clone the repository
 2. Navigate to the UserManagement.Api directory
 3. Run `dotnet restore` to restore dependencies
-4. Update the connection string in `appsettings.json`
 5. Run `dotnet run` to start the API
 
 ## Authentication
 
 ### Generating a JWT Token
 
-To create a JWT token, send a POST request to the `api/Users/GenerateToken` endpoint with the following body:
+To create a JWT token, send a POST request to the `api/Users/GetToken` endpoint with the following body:
 
 ```
 curl -X 'POST' \
-  'http://127.0.0.1:<PORT>/api/Users/GenerateToken' \
+  'http://127.0.0.1:5110/api/Users/GetToken' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
-  -d '<Company-Name>'
+  -d '{
+  "userName": "Amit",
+  "password": "qwe12www",
+  "company": "RICHKID"
+}'
 ```
 
-The API will return a JWT token that you can use for authentication in subsequent requests. Your IP address will also be automatically whitelisted for security purposes.
+The API will return a JWT token that you can use for authentication in subsequent requests. 
+Your IP address will be checked against a whitelist to ensure that only authorized users can generate tokens.
+(can be cancelled by the manager)
+**you can get a token ONLY if you are in the Credintials.json file**
 
 ### Using the JWT Token
 
@@ -56,7 +63,7 @@ Authorization: Bearer {your_jwt_token}
 - `GET api/Users/{Userid}` - Get user by ID
 - `POST api/Users/AddUSer` - Create a new user
 - `POST api/Users/SearchUser` - Search a user by his First Name Or last
-- `Post api/Users/GenerateToken` - Get a JWT Token from the API, An end user needs to write the company name, and then there is validation of the IP address. 
+- `Post api/Users/GetToken` - Get token for authentication, User need to login to get a token
 
 
 ## Technical Implementation Details
@@ -79,6 +86,8 @@ All incoming requests are validated through middleware and DTOs before processin
 /UserManagement.Api/
 ├── App_Data/                      # Data storage location
 │   ├── Users.json                 # JSON file storing user data
+│   ├── Users.json.bak             # Backup file for user data
+│   └── Credentials.json           # Stores authentication credentials
 │
 ├── Controllers/                   # API endpoints and request handling
 │   └── UsersController.cs         # Handles all user-related requests
@@ -93,28 +102,31 @@ All incoming requests are validated through middleware and DTOs before processin
 ├── Models/                        # Data models and DTOs
 │   ├── DTOS/                      # Data Transfer Objects
 │   │   ├── CreateUserDto.cs       # DTO for user creation
+│   │   ├── CredentialsDto.cs      # DTO for authentication credentials
 │   │   ├── SearchUserDto.cs       # DTO for user search
 │   │   └── Validators/            # Input validation
 │   │       └── DtoValidator.cs    # Validates DTO objects
 │   └── User.cs                    # User entity model
 │
 ├── Repositories/                  # Data access layer
-│   ├── JsonUserStorage.cs         # JSON file storage implementation
+│   ├── JsonUserStorage.cs         # JSON file storage for users
+│   ├── JsonCredentialsManager.cs  # Manages authentication credentials
 │   └── UserRepository.cs          # User data operations
 │
 ├── Program.cs                     # Application entry point and setup
-
+├── appsettings.json               # Application configuration
 ```
 
 ### Key Components Explanation
 
-- **App_Data**: Contains the JSON file used for storing user data, with a backup mechanism to prevent data loss.
+- **App_Data**: Contains the JSON file used for storing user data, 
+ Credentials.json for storing authentication credentials, and a backup file for data safety.
 
 - **Controllers**: Contains the UsersController which handles all HTTP requests for user management and authentication.
 
 - **Middleware**: 
   - IP validation components ensure requests come from authorized sources
-  - JWT generation and validation secures API access, and Company
+  - JWT generation and validation secures API access by the credentials.json file. only users in the file can get a token
   - SecurityMiddleware combines these security features into the request pipeline
 
 - **Models**: 
@@ -124,6 +136,7 @@ All incoming requests are validated through middleware and DTOs before processin
 - **Repositories**: 
   - JsonUserStorage provides the file-based persistence layer
   - UserRepository implements the business logic for data access with concurrency control
+  - JsonCredentialsManager manages the authentication credentials stored in the JSON file
 
 ## Swagger Documentation
 
@@ -143,34 +156,18 @@ You can also interact with the API manually using tools like Postman, curl, or a
 ### Authentication Request
 ```bash
 curl -X 'POST' \
-  'http://127.0.0.1:5110/api/Users/GenerateToken' \
+  'https://localhost:7011/api/Users/GetToken' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
-  -d '<Company-Name>'
+  -d '{
+  "userName": "Amit",
+  "password": "qwe12www",
+  "company": "RICHKID"
+}'
  
 ```
+and etc..
 
-### Get All Users
-```bash
-curl -X 'GET' \
-  'http://127.0.0.1:5110/api/Users/GetAllUsers' \
-  -H 'accept: text/plain' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb21wYW55IjoiQXBwbGUiLCJuYmYiOjE3NDQ5NzQ3NjIsImV4cCI6MTc0NDk3ODM2MiwiaWF0IjoxNzQ0OTc0NzYyLCJpc3MiOiJVc2VyTWFuYWdlbWVudC5BcGkiLCJhdWQiOiJVc2VyTWFuYWdlbWVudC5BcGkifQ.pbraBtnOMZ60pCuVPeKKj1d5BzPO38lVzUxZ4ZByw7Q'
-```
-
-### Create New User
-```bash
-curl -X POST "http://localhost:<port>/api/Users" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer your_jwt_token" \
-    -d '{
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john.doe@example.com",
-        "phone": "123-456-7890",
-        "role": "User"
-      }'
-```
 **Remember to replace `<port>` with your actual API port and `your_jwt_token` with the token received from the GenerateToken endpoint.**
 ![image](https://github.com/user-attachments/assets/250e837d-cf8e-433b-ae90-39594f7faefe)
 

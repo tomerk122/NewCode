@@ -42,6 +42,10 @@ namespace UserManagement.Api.Repositories
         public static void RefreshCache()
         {
             _cachedUsers = JsonUserStorage.LoadUsers();
+         
+        }
+        public static void RefreshCredentialsCache()
+        {
             _cachedCredentials = JsonCredentialsManager.LoadCredentials();
         }
 
@@ -129,6 +133,7 @@ namespace UserManagement.Api.Repositories
 
         public static bool AuthenticateUser(string userName, string password, string company)
         {
+            RefreshCredentialsCache(); // to make sure we have the latest credentials
             var credentials = _cachedCredentials;
 
             var userExists = credentials.Any(cred =>
