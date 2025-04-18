@@ -21,13 +21,13 @@ This solution consists of two main projects:
 ## API Features (UserManagement.Api)
 
 - **Security**:
-  - JWT authentication via the `GenerateKey` endpoint
-  - IP whitelisting through the `SecurityMiddleware`
+  - JWT authentication via the `GetToken` endpoint, User need to be authenticated to get a token
+  - IP whitelisting through the `SecurityMiddleware` ( cant be canclled if the workers can work from anywhere.
 - **User Management Endpoints**:
   - Get all users
   - Get user by ID
   - Create users
-  - Search users
+  - Search users by first and last name
 - **Concurrency Control**: Prevents race conditions when multiple clients access the API simultaneously
 - **Caching**: Improves performance through in-memory caching
 
