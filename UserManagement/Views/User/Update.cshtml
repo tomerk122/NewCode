@@ -42,7 +42,7 @@
         <!-- First Name -->
         <div style="margin-bottom: 10px;">
             <label asp-for="Data.FirstName">First Name:</label><br />
-            <input asp-for="Data.FirstName" class="form-control" pattern="[A-Za-z0-9]*"
+            <input asp-for="Data.FirstName" class="form-control" pattern="[A-Za-z0-9]*" maxlength="10"
                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
             <span asp-validation-for="Data.FirstName" style="color: red;"></span>
         </div>
@@ -50,7 +50,7 @@
         <!-- Last Name -->
         <div style="margin-bottom: 10px;">
             <label asp-for="Data.LastName">Last Name:</label><br />
-            <input asp-for="Data.LastName" class="form-control" pattern="[A-Za-z0-9]*"
+            <input asp-for="Data.LastName" class="form-control" pattern="[A-Za-z0-9]*" maxlength="10"
                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
             <span asp-validation-for="Data.LastName" style="color: red;"></span>
         </div>
@@ -58,7 +58,7 @@
         <!-- Username -->
         <div style="margin-bottom: 10px;">
             <label asp-for="UserName">Username:</label><br />
-            <input asp-for="UserName" class="form-control" pattern="[A-Za-z0-9]*"
+            <input asp-for="UserName" class="form-control" pattern="[A-Za-z0-9]*" maxlength="10"
                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
             <span asp-validation-for="UserName" style="color: red;"></span>
         </div>
@@ -66,7 +66,7 @@
         <!-- Password -->
         <div style="margin-bottom: 10px;">
             <label asp-for="Password">Password:</label><br />
-            <input asp-for="Password" type="text" class="form-control" pattern="[A-Za-z0-9]*"
+            <input asp-for="Password" type="text" class="form-control" pattern="[A-Za-z0-9]*" maxlength="10"
                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
             <span asp-validation-for="Password" style="color: red;"></span>
         </div>
@@ -74,7 +74,7 @@
         <!-- Phone -->
         <div style="margin-bottom: 10px;">
             <label asp-for="Data.Phone">Phone:</label><br />
-            <input asp-for="Data.Phone" class="form-control" pattern="[0-9]*"
+            <input asp-for="Data.Phone" class="form-control" pattern="[0-9]*" maxlength="10"
                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
             <span asp-validation-for="Data.Phone" style="color: red;"></span>
         </div>
@@ -96,7 +96,7 @@
         <!-- User Group ID -->
         <div style="margin-bottom: 10px;">
             <label asp-for="UserGroupId">User Group ID:</label><br />
-            <input asp-for="UserGroupId" type="number" class="form-control"
+            <input asp-for="UserGroupId" type="number" class="form-control" 
                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" />
             <span asp-validation-for="UserGroupId" style="color: red;"></span>
         </div>
