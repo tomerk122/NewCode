@@ -169,7 +169,8 @@ curl -X 'POST' \
 and etc..
 
 **Remember to replace `<port>` with your actual API port and `your_jwt_token` with the token received from the GenerateToken endpoint.**
-![image](https://github.com/user-attachments/assets/250e837d-cf8e-433b-ae90-39594f7faefe)
+![image](https://github.com/user-attachments/assets/0c710dbf-d4dd-4a10-8cc6-72cd824d3ce1)
+
 
 
 
