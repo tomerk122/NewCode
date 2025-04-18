@@ -151,6 +151,8 @@ else
         <thead>
             <tr>
                 <th>User ID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
                 <th>Username</th>
                 <th>Status</th>
                 <th>Creation Date</th>
@@ -167,7 +169,10 @@ else
             @foreach (var user in Model)
             {
                 <tr>
+                    
                     <td>@user.UserId</td>
+                    <td>@user.Data.FirstName</td>
+                    <td>@user.Data.LastName</td>
                     <td>@user.UserName</td>
                     <td>@(user.Active ? "Active" : "Inactive")</td>
                     <td>@user.Data.CreationDate</td>
