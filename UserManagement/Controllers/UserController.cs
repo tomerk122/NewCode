@@ -10,14 +10,22 @@ namespace UserManagement.Controllers
 
         public IActionResult Index()
         {
-            var users = UserRepository.GetCachedUsers();
-            if (!users.Any())
+            try
             {
-                SetErrorMessage("No users found.");
+                var users = UserRepository.GetCachedUsers();
+                if (!users.Any())
+                {
+                    SetErrorMessage("No users found.");
+                }
+                return View(users);
             }
-
-            return View(users);
+            catch (Exception ex)
+            {
+                SetErrorMessage($"Error retrieving users: {ex.Message}");
+                return View(new List<User>());
+            }
         }
+
 
 
         #endregion
@@ -27,35 +35,53 @@ namespace UserManagement.Controllers
         // this function is used to load user by filtering by Active status
         public IActionResult FilterByStatus(bool isActive)
         {
-            var filteredResult = UserRepository.GetUsersByStatus(isActive);
-
-            if (!filteredResult.Any())
+            try
             {
-                SetErrorMessage("No users match the selected status.");
-            }
+                var filteredResult = UserRepository.GetUsersByStatus(isActive);
 
-            return View("Index", filteredResult);
+                if (!filteredResult.Any())
+                {
+                    SetErrorMessage("No users match the selected status.");
+                }
+
+                return View("Index", filteredResult);
+            }
+            catch (Exception ex)
+            {
+                SetErrorMessage($"Error filtering users: {ex.Message}");
+                return View("Index", new List<User>());
+            }
         }
 
 
 
 
 
-        // in this function we are searching users by their name, email, phone
+
+        // in this function we are searching users by a string, it could be a name or email or phone.
         public IActionResult SearchByCustomFilter(string UserData)
         {
-            var filteredResult = UserRepository.SearchUsers(UserData);
-
-            if (string.IsNullOrWhiteSpace(UserData))
+            try
             {
-                SetErrorMessage("Please enter a valid search query.");
-            }
-            else if (!filteredResult.Any())
-            {
-                SetErrorMessage("No users match the search term.");
-            }
+                if(string.IsNullOrEmpty(UserData))
+                {
+                    SetErrorMessage("Please enter a valid search query.");
+                    return View("Index", new List<User>());
+                }
+                var filteredResult = UserRepository.SearchUsers(UserData);
 
-            return View("Index", filteredResult);
+                if (!filteredResult.Any())
+                {
+                    SetErrorMessage("No users match the search term.");
+                }
+
+                return View("Index", filteredResult);
+            }
+            catch (Exception ex)
+            {
+                SetErrorMessage($"Error searching users: {ex.Message}");
+                return View("Index", new List<User>());
+            }
         }
 
 
@@ -126,15 +152,22 @@ namespace UserManagement.Controllers
         }
         public IActionResult UpdateUser(int userId)
         {
-            var userToUpdate = UserRepository.GetUserById(userId);
-
-            if (userToUpdate != null)
+            try
             {
-                return View("Update", userToUpdate);
-            }
+                var userToUpdate = UserRepository.GetUserById(userId);
+                if (userToUpdate != null)
+                {
+                    return View("Update", userToUpdate);
+                }
 
-            ViewBag.Message = "User not found.";
-            return RedirectToAction("Index");
+                SetErrorMessage("User not found.");
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                SetErrorMessage($"Error retrieving user for update: {ex.Message}");
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]

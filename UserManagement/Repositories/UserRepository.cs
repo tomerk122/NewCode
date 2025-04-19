@@ -19,7 +19,16 @@ namespace UserManagement.Repositories
 
         public static User? GetUserById(int userId) // can be null, so in the function we will check if it is null
         {
-            return _cachedUsers.FirstOrDefault(user => user.UserId == userId);
+            try
+            {
+                return _cachedUsers.FirstOrDefault(user => user.UserId == userId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching user by ID {userId}: {ex.Message}");
+                return null;
+            }
+
         }
 
 
@@ -32,13 +41,27 @@ namespace UserManagement.Repositories
 
         public static void RefreshCache()
         {
-            _cachedUsers = JsonUserStorage.LoadUsers();
+            try
+            {
+                _cachedUsers = JsonUserStorage.LoadUsers();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error refreshing user cache: {ex.Message}");
+            }
         }
 
 
         public static void SaveUsers()
         {
-            JsonUserStorage.SaveUsers(_cachedUsers);
+            try
+            {
+                JsonUserStorage.SaveUsers(_cachedUsers);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving users: {ex.Message}");
+            }
         }
         public static void DeleteUser(int userId)
         {
@@ -51,7 +74,10 @@ namespace UserManagement.Repositories
         }
         public static bool CheckUserName(string userName) // if the username exists in the list
         {
-
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new Exception("User name is required!");
+            }
             return _cachedUsers.Any(user =>
               user.UserName != null &&
                 user.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
@@ -60,47 +86,80 @@ namespace UserManagement.Repositories
         }
         public static void AddUser(User newUser)
         {
-            if (CheckUserName(newUser.UserName))
+            try
             {
-                throw new Exception("unique User Name!");
+                if (CheckUserName(newUser.UserName))
+                {
+                    throw new Exception("unique User Name!");
+                }
+                newUser.UserId = GenerateNewUserId();
+                // giving the new user a unique ID (from the max ID in the list)
+                _cachedUsers.Add(newUser);
+                SaveUsers();
             }
-            newUser.UserId = _cachedUsers.Any() ? _cachedUsers.Max(u => u.UserId) + 1 : 1; 
-            // giving the new user a unique ID (from the max ID in the list)
-            _cachedUsers.Add(newUser);
-            SaveUsers();
+            catch (Exception ex)
+            {
+                throw new Exception("Error adding user: " + ex.Message);
+            }
+        }
+        public static int GenerateNewUserId()
+        {
+
+            try
+            {
+                return _cachedUsers.Any() ? _cachedUsers.Max(u => u.UserId) + 1 : 1;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error generating new user ID: " + ex.Message);
+            }
+
         }
 
         public static void UpdateUser(User updatedUser)
         {
-            var users = GetCachedUsers();
-            if (updatedUser.UserId != users.FirstOrDefault(myUser => myUser.UserId == updatedUser.UserId)?.UserId)
+            try
             {
-                if (CheckUserName(updatedUser.UserName))
+                var users = GetCachedUsers();
+                if (updatedUser.UserId != users.FirstOrDefault(myUser => myUser.UserId == updatedUser.UserId)?.UserId)
                 {
-                    throw new Exception("unique User Name needed");
+                    if (CheckUserName(updatedUser.UserName))
+                    {
+                        throw new Exception("unique User Name needed");
+                    }
+                }
+
+                var existingUser = users.FirstOrDefault(myUsers => myUsers.UserId == updatedUser.UserId);
+                if (existingUser != null)
+                {
+                    int index = _cachedUsers.IndexOf(existingUser);
+                    _cachedUsers[index] = updatedUser;
+                    SaveUsers();
+                }
+                else
+                {
+                    throw new Exception("User not Found!");
                 }
             }
-
-            var existingUser = users.FirstOrDefault(myUsers => myUsers.UserId == updatedUser.UserId);
-            if (existingUser != null)
+            catch (Exception ex)
             {
-                int index = _cachedUsers.IndexOf(existingUser);
-                _cachedUsers[index] = updatedUser;
-                SaveUsers();
-            }
-            else
-            {
-                throw new Exception("User not Found!");
+                throw new Exception("Error updating user: " + ex.Message);
             }
         }
         public static List<User> GetUsersByStatus(bool isActive)
         {
-            return _cachedUsers
-                .Where(user => user.Active == isActive)
-                .ToList();
+            try
+            {
+                return _cachedUsers
+                    .Where(user => user.Active == isActive)
+                    .ToList();
+            } catch (Exception ex) {
+                throw new Exception("Error filtering users by status: " + ex.Message);
+            }
         }
         public static List<User> SearchUsers(string query)
         {
+
             if (string.IsNullOrWhiteSpace(query))
             {
                 return new List<User>();

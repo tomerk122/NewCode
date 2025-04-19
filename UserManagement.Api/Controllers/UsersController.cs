@@ -18,23 +18,38 @@ namespace UserManagement.Api.Controllers
         [HttpGet("GetAllUsers")]
         public ActionResult<IEnumerable<User>> GetAllUsers()
         {
-            var users = UserRepository.GetCachedUsers();
-            if (!users.Any())
+            try
             {
-                return NotFound("No users found.");
+                var users = UserRepository.GetCachedUsers();
+                if (!users.Any())
+                {
+                    return NotFound("No users found.");
+                }
+                return Ok(users);
             }
-            return Ok(users);
+            catch (Exception ex)
+            {
+                return BadRequest($"Error retrieving users: {ex.Message}");
+            }
         }
+
 
         [HttpGet("{userId}")]
         public ActionResult<User> GetUserById(int userId)
         {
-            var user = UserRepository.GetUserById(userId);
-            if (user == null)
+            try
             {
-                return NotFound($"User with ID {userId} not found.");
+                var user = UserRepository.GetUserById(userId);
+                if (user == null)
+                {
+                    return NotFound($"User with ID {userId} not found.");
+                }
+                return Ok(user);
             }
-            return Ok(user);
+            catch (Exception ex)
+            {
+                return BadRequest($"Error fetching user by ID: {ex.Message}");
+            }
         }
 
         [HttpPost("AddUser")]

@@ -13,7 +13,7 @@ namespace UserManagement.Api.Repositories
         {
             if (!File.Exists(FilePath))
                 return new List<Credentials>();
-
+          
             var jsonData = File.ReadAllText(FilePath);
             return JsonConvert.DeserializeObject<List<Credentials>>(jsonData) ?? new List<Credentials>();
         }

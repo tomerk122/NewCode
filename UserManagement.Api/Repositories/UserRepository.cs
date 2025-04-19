@@ -22,12 +22,21 @@ namespace UserManagement.Api.Repositories
 
         public static User? GetUserById(int userId) // can be null, so in the function we will check if it is null
         {
-            return _cachedUsers.FirstOrDefault(user => user.UserId == userId);
+            try
+            {
+               return _cachedUsers?.FirstOrDefault(user => user.UserId == userId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching user by ID {userId}: {ex.Message}");
+                return null; 
+            }
         }
 
 
         public static List<User> GetCachedUsers()
         {
+            
             _lock.EnterReadLock();
             try
             {
@@ -41,23 +50,47 @@ namespace UserManagement.Api.Repositories
 
         public static void RefreshCache()
         {
-            _cachedUsers = JsonUserStorage.LoadUsers();
-         
+            try
+            {
+                _cachedUsers = JsonUserStorage.LoadUsers();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error refreshing user cache: {ex.Message}");
+            }
+
         }
         public static void RefreshCredentialsCache()
         {
-            _cachedCredentials = JsonCredentialsManager.LoadCredentials();
+            try
+            {
+                _cachedCredentials = JsonCredentialsManager.LoadCredentials();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error refreshing credentials cache: {ex.Message}");
+            }
         }
 
 
         public static void SaveUsers()
         {
-            JsonUserStorage.SaveUsers(_cachedUsers);
+            try
+            {
+                JsonUserStorage.SaveUsers(_cachedUsers);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving users: {ex.Message}");
+            }
         }
 
         public static bool CheckUserName(string userName) // if the username exists in the list
         {
-
+            if(string.IsNullOrEmpty(userName))
+            {
+              throw new Exception("User name is required!");
+            }
             return _cachedUsers.Any(user =>
               user.UserName != null &&
                 user.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
@@ -78,7 +111,8 @@ namespace UserManagement.Api.Repositories
                 _cachedUsers.Add(newUser);
 
 
-                JsonUserStorage.SaveUsers(_cachedUsers);
+                //JsonUserStorage.SaveUsers(_cachedUsers);
+                SaveUsers();
                 RefreshCache();
             }
             finally
@@ -100,27 +134,6 @@ namespace UserManagement.Api.Repositories
         }
 
 
-
-        public static List<User> GetUsersByStatus(bool isActive)
-        {
-            return _cachedUsers
-                .Where(user => user.Active == isActive)
-                .ToList();
-        }
-        public static List<User> SearchUsers(string query)
-        {
-            if (string.IsNullOrWhiteSpace(query))
-            {
-                return new List<User>();
-            }
-
-            return _cachedUsers.Where(user =>
-                (!string.IsNullOrEmpty(user.UserName) && user.UserName.Contains(query, StringComparison.OrdinalIgnoreCase)) ||
-                (!string.IsNullOrEmpty(user.Data?.Email) && user.Data.Email.Contains(query, StringComparison.OrdinalIgnoreCase)) ||
-                (!string.IsNullOrEmpty(user.Data?.Phone) && user.Data.Phone.Contains(query))
-            ).ToList();
-        }
-
         public static List<User> SearchUsersByFirstOrLastName(SearchUserDto searchCriteria)
         {
             return _cachedUsers.Where(user =>
@@ -131,6 +144,9 @@ namespace UserManagement.Api.Repositories
             ).ToList();
         }
 
+
+
+        #region Authentication for API users
         public static bool AuthenticateUser(string userName, string password, string company)
         {
             RefreshCredentialsCache(); // to make sure we have the latest credentials
@@ -143,6 +159,7 @@ namespace UserManagement.Api.Repositories
 
             return userExists;
         }
+        #endregion
 
     }
 }

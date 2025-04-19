@@ -21,13 +21,13 @@ This solution consists of two main projects:
 ## API Features (UserManagement.Api)
 
 - **Security**:
-  - JWT authentication via the `GenerateKey` endpoint
-  - IP whitelisting through the `SecurityMiddleware`
+  - JWT authentication via the `GetToken` endpoint, User need to be authenticated to get a token
+  - IP whitelisting through the `SecurityMiddleware` ( cant be canclled if the workers can work from anywhere.
 - **User Management Endpoints**:
   - Get all users
   - Get user by ID
   - Create users
-  - Search users
+  - Search users by first and last name
 - **Concurrency Control**: Prevents race conditions when multiple clients access the API simultaneously
 - **Caching**: Improves performance through in-memory caching
 
@@ -37,6 +37,8 @@ Both applications use a JSON file-based storage system:
 - `JsonUserStorage` handles reading and writing user data to JSON files
 - Data is stored in the `App_Data/Users.json` file
 - Both applications implement a caching mechanism to improve performance
+- in the API version, we also have Json `JsonCredentialsManager.cs` for managing the credentials of the users who can access the API.
+
 
 ## User Model
 
@@ -45,6 +47,8 @@ The `User` model includes:
 - Active status flag
 - User group information
 - Personal data in the `UserData` class (FirstName, LastName, Email, Phone, CreationDate)
+- We have also in the API Dto (Data Tranfer Object) to validate the input data
+
 
 ## Documentation
 

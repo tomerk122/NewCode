@@ -1,62 +1,88 @@
 {
   "Users": [
     {
-      "UserID": 1,
-      "Active": true,
+      "UserId": 1,
       "UserName": "Alon",
       "Password": "1111",
-      "UserGroupID": null,
+      "Active": true,
+      "UserGroupId": null,
       "Data": {
-        "CreationDate": "2024-01-01",
+        "Phone": "0525716539",
+        "Email": "Alon@gmail.com",
         "FirstName": "Alon",
         "LastName": "Cohen",
-        "Phone": "0525716539",
-        "Email": "Alon@gmail.com"
+        "CreationDate": "2024-01-01"
       }
     },
     {
-      "UserID": 2,
-      "Active": true,
+      "UserId": 2,
       "UserName": "Beti222",
       "Password": "22222",
-      "UserGroupID": null,
+      "Active": true,
+      "UserGroupId": null,
       "Data": {
-        "CreationDate": "2024-01-25",
+        "Phone": "0525700231",
+        "Email": "",
         "FirstName": "Beti",
         "LastName": "Cohen",
-        "Phone": "0525700231",
-        "Email": ""
+        "CreationDate": "2024-01-25"
       }
     },
     {
-      "UserID": 3,
-      "Active": false,
+      "UserId": 3,
       "UserName": "CharliBrown",
       "Password": "33333333",
-      "UserGroupID": 4,
+      "Active": false,
+      "UserGroupId": 4,
       "Data": {
-        "CreationDate": "2023-05-17",
+        "Phone": "0503121243",
+        "Email": "CharliBrown@gmail.com",
         "FirstName": "Charli",
         "LastName": "Brown",
-        "Phone": "0503121243",
-        "Email": "CharliBrown@gmail.com"
+        "CreationDate": "2023-05-17"
       }
     },
     {
-      "UserID": 4,
-      "Active": true,
+      "UserId": 4,
       "UserName": "DanielaDanon",
       "Password": "ab!44",
-      "UserGroupID": 2,
+      "Active": true,
+      "UserGroupId": 2,
       "Data": {
-        "CreationDate": "2022-11-05",
+        "Phone": "",
+        "Email": "Daniela@gmail.com",
         "FirstName": "Daniela",
         "LastName": "Danon",
-        "Phone": "",
-        "Email": "Daniela@gmail.com"
+        "CreationDate": "2022-11-05"
+      }
+    },
+    {
+      "UserId": 5,
+      "UserName": "Tomer",
+      "Password": "StrongPassword2025!",
+      "Active": true,
+      "UserGroupId": 1,
+      "Data": {
+        "Phone": "+972-50-1234567",
+        "Email": "example.user@email.com",
+        "FirstName": "Tomer",
+        "LastName": "Example",
+        "CreationDate": "2025-04-19"
+      }
+    },
+    {
+      "UserId": 6,
+      "UserName": "exampleUser123",
+      "Password": "StrongPassword2025!",
+      "Active": true,
+      "UserGroupId": 1,
+      "Data": {
+        "Phone": "+972-50-1234567",
+        "Email": "example.user@email.com",
+        "FirstName": "Tomer",
+        "LastName": "Example",
+        "CreationDate": "2025-04-19"
       }
     }
   ]
 }
-
-  
