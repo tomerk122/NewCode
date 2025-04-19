@@ -64,4 +64,4 @@ To run the applications:
 3. Run `dotnet run` to start the application
 4. For the API, browse to `/swagger` to view the API documentation
 
-The web application is accessible at the root URL, and the API requires authentication with a JWT token obtained through the `/api/Users/GenerateKey` endpoint.
+The web application is accessible at the root URL, and the API requires authentication with a JWT token obtained through the `/api/Users/GetToken` endpoint.
