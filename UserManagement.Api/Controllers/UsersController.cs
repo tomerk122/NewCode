@@ -13,8 +13,6 @@ namespace UserManagement.Api.Controllers
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
-
-
         [HttpGet("GetAllUsers")]
         public ActionResult<IEnumerable<User>> GetAllUsers()
         {
@@ -52,6 +50,23 @@ namespace UserManagement.Api.Controllers
             }
         }
 
+        [AllowAnonymous]
+        [HttpPost("TestTo")]
+        public ActionResult Test([FromBody] string test)
+        {
+            try
+            {
+               return CreatedAtAction(nameof(GetUserById), new { userId = 1 }, test);
+               
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error in test: {ex.Message}");
+            }
+        }
+
+
         [HttpPost("AddUser")]
         public ActionResult CreateUser([FromBody] CreateUserDto userDto)
         {
@@ -79,8 +94,8 @@ namespace UserManagement.Api.Controllers
         }
 
 
-        [HttpPost("SearchUser")]
-        public ActionResult SearchUser([FromBody] SearchUserDto searchUserDto)
+        [HttpGet("SearchUser")]
+        public ActionResult<User> SearchUser([FromQuery] SearchUserDto searchUserDto)
         {
             try
             {
@@ -105,28 +120,28 @@ namespace UserManagement.Api.Controllers
             {
                 return BadRequest($"Error searching users: {ex.Message}");
             }
-           
+
         }
-       
+
         [HttpPost("GetToken")]
         [AllowAnonymous]
-        public IActionResult GenerateToken([FromBody] Credentials ManagerCred)
+        public ActionResult GenerateToken([FromBody] Credentials ManagerCred)
         {
             try
             {
                 var validationErrors = DtoValidator.ValidateCredentialsDto(ManagerCred);
-                if(validationErrors.Count > 0)
+                if (validationErrors.Count > 0)
                 {
                     return BadRequest($"Validation failed: {string.Join(", ", validationErrors)}");
                 }
-                var credentials =UserRepository.AuthenticateUser(ManagerCred.UserName, ManagerCred.Password, ManagerCred.Company);
-                if(!credentials)
+                var credentials = UserRepository.AuthenticateUser(ManagerCred.UserName, ManagerCred.Password, ManagerCred.Company);
+                if (!credentials)
                 {
                     return Unauthorized("Invalid credentials.");
                 }
 
                 var token = JwtTokenGenerator.GenerateToken(ManagerCred);
-                return Ok(new { Token = token });
+                return Ok(new { Token = string.Join(" ","Bearer",token) });
             }
             catch (ArgumentException ex)
             {
@@ -136,7 +151,7 @@ namespace UserManagement.Api.Controllers
             {
                 return BadRequest($"Error generating token: {ex.Message}");
             }
-           
+
         }
 
 
@@ -166,11 +181,13 @@ namespace UserManagement.Api.Controllers
                 },
             };
         }
-        
-        
-        
+
+
+
         #endregion
 
     }
 
+
+  
 }

@@ -19,6 +19,8 @@
         public bool Active { get; set; }
         public int? UserGroupId { get; set; }
         public UserData Data { get; set; } = new UserData();
+        
+     
     }
 
     public class UserData

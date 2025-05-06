@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml;
 using Microsoft.AspNetCore.Mvc;
+using static UserManagement.Repositories.JsonUserStorage;
 
 namespace UserManagement.Repositories
 {
@@ -10,6 +11,7 @@ namespace UserManagement.Repositories
         private static List<User> _cachedUsers;
         // loading the json evey time is not efficient, so we will load it once and cache it
         // in the static constructor
+
 
         static UserRepository()
         {
@@ -35,9 +37,10 @@ namespace UserManagement.Repositories
         public static List<User> GetCachedUsers()
         {
             return _cachedUsers;
+        
         }
 
-      
+     
 
         public static void RefreshCache()
         {
@@ -108,6 +111,8 @@ namespace UserManagement.Repositories
             try
             {
                 return _cachedUsers.Any() ? _cachedUsers.Max(u => u.UserId) + 1 : 1;
+                // if the list is empty, we will start from 1, otherwise we will take the max ID and add 1 to it
+                //the cachedUser.any is used to check if the list is empty or not
             }
             catch (Exception ex)
             {
@@ -121,12 +126,11 @@ namespace UserManagement.Repositories
             try
             {
                 var users = GetCachedUsers();
-                if (updatedUser.UserId != users.FirstOrDefault(myUser => myUser.UserId == updatedUser.UserId)?.UserId)
+                if (users.Any(myUser =>
+                    myUser.UserId != updatedUser.UserId && 
+                    myUser.UserName.Equals(updatedUser.UserName, StringComparison.OrdinalIgnoreCase)))
                 {
-                    if (CheckUserName(updatedUser.UserName))
-                    {
-                        throw new Exception("unique User Name needed");
-                    }
+                    throw new Exception("Unique User Name needed!");
                 }
 
                 var existingUser = users.FirstOrDefault(myUsers => myUsers.UserId == updatedUser.UserId);
@@ -146,6 +150,8 @@ namespace UserManagement.Repositories
                 throw new Exception("Error updating user: " + ex.Message);
             }
         }
+
+
         public static List<User> GetUsersByStatus(bool isActive)
         {
             try
@@ -171,7 +177,5 @@ namespace UserManagement.Repositories
                 (!string.IsNullOrEmpty(user.Data?.Phone) && user.Data.Phone.Contains(query))
             ).ToList();
         }
-
-
     }
 }

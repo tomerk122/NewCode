@@ -14,9 +14,11 @@ namespace UserManagement.Api.Middleware
     {
         private readonly RequestDelegate _next;
 
-        public SecurityMiddleware(RequestDelegate next)
+
+        public SecurityMiddleware(RequestDelegate next) 
         {
-            _next = next;
+
+                _next = next;
         }
 
 

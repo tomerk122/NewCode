@@ -5,7 +5,7 @@
 # Build folders
 bin/
 obj/
-
+.vs
 # Publish folders
 
 .publish/

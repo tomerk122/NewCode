@@ -30,7 +30,7 @@ The UserManagement.API project is a web API designed for managing users. It incl
 
 To create a JWT token, send a POST request to the `api/Users/GetToken` endpoint with the following body:
 
-**You must be a user in credential in App_Data**
+**In order to create a key, you must be an authenticated user in 
 
 ```
 curl -X 'POST' \

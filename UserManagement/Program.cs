@@ -1,9 +1,14 @@
-var builder = WebApplication.CreateBuilder(args);
+using UserManagement.Repositories;
+
+var builder = WebApplication.CreateBuilder(args); // Create a new instance of the WebApplicationBuilder class, which is used to configure the application and its services.
+
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(); // is used to add MVC services to the container
 
-var app = builder.Build();
+builder.Services.AddScoped<IItemsRepo, ItemsRepo>(); // Register the IItemsRepo interface and its implementation ItemsRepo with a scoped lifetime, meaning a new instance will be created for each request.
+
+var app = builder.Build(); // Build the application pipeline and create an instance of the WebApplication class, which represents the application itself.
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -23,5 +28,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 app.Run();

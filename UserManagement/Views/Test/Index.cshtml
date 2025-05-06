@@ -1,0 +1,32 @@
+﻿@model IReadOnlyCollection<UserManagement.Entites.Item>
+
+<h2>@ViewBag.Message</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+        <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: left; border-collapse: collapse;">
+            <thead style="background-color: #f2f2f2;">
+                <tr>
+                    <th>שם</th>
+                    <th>תיאור</th>
+                    <th>מחיר</th>
+                    <th>תאריך יצירה</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td>@item.Price ₪</td>
+                            <td>@item.CreatedDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        </tr>
+            }
+            </tbody>
+        </table>
+}
+else
+{
+        <p style="color: red; font-weight: bold;">אין פריטים להצגה כרגע.</p>
+}

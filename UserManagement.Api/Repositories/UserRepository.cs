@@ -5,7 +5,7 @@ namespace UserManagement.Api.Repositories
 {
     public static class UserRepository
     {
-       
+
         private static List<User> _cachedUsers;
         private static List<Credentials> _cachedCredentials;
 
@@ -24,19 +24,19 @@ namespace UserManagement.Api.Repositories
         {
             try
             {
-               return _cachedUsers?.FirstOrDefault(user => user.UserId == userId);
+                return _cachedUsers?.FirstOrDefault(user => user.UserId == userId);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error fetching user by ID {userId}: {ex.Message}");
-                return null; 
+                return null;
             }
         }
 
 
         public static List<User> GetCachedUsers()
         {
-            
+
             _lock.EnterReadLock();
             try
             {
@@ -87,9 +87,9 @@ namespace UserManagement.Api.Repositories
 
         public static bool CheckUserName(string userName) // if the username exists in the list
         {
-            if(string.IsNullOrEmpty(userName))
+            if (string.IsNullOrEmpty(userName))
             {
-              throw new Exception("User name is required!");
+                throw new Exception("User name is required!");
             }
             return _cachedUsers.Any(user =>
               user.UserName != null &&
@@ -122,12 +122,13 @@ namespace UserManagement.Api.Repositories
         }
         public static int GenerateNewUserId()
         {
-           
+
             try
             {
                 return _cachedUsers.Any() ? _cachedUsers.Max(u => u.UserId) + 1 : 1;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 throw new Exception("Error generating new user ID: " + ex.Message);
             }
 

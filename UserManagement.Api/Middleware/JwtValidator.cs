@@ -40,7 +40,7 @@ namespace UserManagement.Api.Middleware
             var tokenHandler = new JwtSecurityTokenHandler();
             var validationParameters = new TokenValidationParameters
             {
-                ValidateIssuer = true,
+                ValidateIssuer = true, // who created the token ( can be a server or a client)
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
@@ -50,6 +50,7 @@ namespace UserManagement.Api.Middleware
             };
             try
             {
+                // trying to validate the token
                 var principal = tokenHandler.ValidateToken(token, validationParameters, out _);
                 var credentials = new Credentials
                 {

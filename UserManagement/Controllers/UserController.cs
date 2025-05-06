@@ -6,12 +6,20 @@ namespace UserManagement.Controllers
 {
     public class UserController : Controller
     {
+        private readonly Email _emailService;
         #region Load Users & index
 
+        public UserController(Email emailService)
+        {
+            Console.WriteLine(  "Im from Controller");
+            _emailService = emailService;
+        }
         public IActionResult Index()
         {
+           
             try
             {
+                _emailService.Send("RWER","rwerwe","REWREW");
                 var users = UserRepository.GetCachedUsers();
                 if (!users.Any())
                 {
@@ -134,6 +142,7 @@ namespace UserManagement.Controllers
             {
                 SetErrorMessage($"Error created user: you need a {ex.Message}");
             }
+            
             return RedirectToAction("Index");
         }
 

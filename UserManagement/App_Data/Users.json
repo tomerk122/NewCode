@@ -16,7 +16,7 @@
     },
     {
       "UserId": 4,
-      "UserName": "DanielaDanon",
+      "UserName": "Daniela",
       "Password": "eqw313",
       "Active": true,
       "UserGroupId": 2,
@@ -30,12 +30,12 @@
     },
     {
       "UserId": 1,
-      "UserName": "Alon",
+      "UserName": "Alon2",
       "Password": "1311",
       "Active": false,
       "UserGroupId": 3,
       "Data": {
-        "Phone": "0525716539",
+        "Phone": "0523242342",
         "Email": "Alon@gmail.com",
         "FirstName": "Alon2",
         "LastName": "Cohen",

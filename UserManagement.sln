@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManagement", "UserManag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManagement.Api", "UserManagement.Api\UserManagement.Api.csproj", "{BC2FB899-2542-4090-A897-B16DB6C53EA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoServices", "TwoServices\TwoServices.csproj", "{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BC2FB899-2542-4090-A897-B16DB6C53EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC2FB899-2542-4090-A897-B16DB6C53EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC2FB899-2542-4090-A897-B16DB6C53EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
