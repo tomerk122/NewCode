@@ -1,6 +1,6 @@
 ﻿namespace UserManagement.Repositories
 {
-    public class Email
+    public class Email : IEmail
     {
         public string SmtpServer { get; set; }
         public int Port { get; set; }
@@ -8,7 +8,7 @@
         public string Password { get; set; }
         public Email()
         {
-            Console.WriteLine(  "Im buildng");
+            Console.WriteLine("Im buildng EMAIL");
         }
 
         public void Send(string to, string subject, string body)

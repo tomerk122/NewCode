@@ -11,6 +11,7 @@ namespace UserManagement.Controllers
 
         public UserController(Email emailService)
         {
+
             Console.WriteLine(  "Im from Controller");
             _emailService = emailService;
         }

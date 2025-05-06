@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserManagement.Entites;
+using UserManagement.Models;
 using UserManagement.Repositories;
 
 namespace UserManagement.Controllers
@@ -11,14 +12,20 @@ namespace UserManagement.Controllers
          interface to create a new item and then retrieve all items from the repository.
          */
         private readonly IItemsRepo r1;
+        private readonly IEmail r2;
+        private readonly Manager _manager;
 
-        public TestController(IItemsRepo r1) // Constructor injection is used to inject the IItemsRepo dependency into the TestController.
+        public TestController(IItemsRepo r1, IEmail r2,Manager manager) // Constructor injection is used to inject the IItemsRepo dependency into the TestController.
         {
             this.r1 = r1;
+            this.r2 = r2;
+            this._manager = manager;
         }
         public async Task<IActionResult> Index()
         
         {
+            _manager.Print();
+            r2.Send("ee", "ewew", "ERRQER");
 
             ViewBag.Message = "Hello from TestController1!";
           
