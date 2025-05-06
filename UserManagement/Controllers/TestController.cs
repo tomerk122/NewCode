@@ -6,9 +6,13 @@ namespace UserManagement.Controllers
 {
     public class TestController : Controller
     {
+        /*
+         in this controller we are using the IItemsRepo 
+         interface to create a new item and then retrieve all items from the repository.
+         */
         private readonly IItemsRepo r1;
 
-        public TestController(IItemsRepo r1)
+        public TestController(IItemsRepo r1) // Constructor injection is used to inject the IItemsRepo dependency into the TestController.
         {
             this.r1 = r1;
         }

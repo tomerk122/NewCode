@@ -3,6 +3,46 @@
   "WorkspaceRootPath": "C:\\Users\\97254\\source\\repos\\UserManagement\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\usermanagement\\repositories\\itemsrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|solutionrelative:usermanagement\\repositories\\itemsrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\usermanagement\\entites\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|solutionrelative:usermanagement\\entites\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\usermanagement\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|solutionrelative:usermanagement\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\usermanagement\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|solutionrelative:usermanagement\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\usermanagement\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|solutionrelative:usermanagement\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\usermanagement\\views\\test\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|solutionrelative:usermanagement\\views\\test\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\usermanagement\\views\\test\\check.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|solutionrelative:usermanagement\\views\\test\\check.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\usermanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2ACF5B9-AC3A-4685-B79B-9008F9E4AA82}|UserManagement\\UserManagement.csproj|solutionrelative:usermanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}|TwoServices\\TwoServices.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\twoservices\\contracts\\obj\\contracts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}|TwoServices\\TwoServices.csproj|solutionrelative:twoservices\\contracts\\obj\\contracts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}|TwoServices\\TwoServices.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\twoservices\\contracts\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}|TwoServices\\TwoServices.csproj|solutionrelative:twoservices\\contracts\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}|TwoServices\\TwoServices.csproj|c:\\users\\97254\\source\\repos\\usermanagement\\twoservices\\setting\\customercreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{15E6441F-F53D-42BD-A8F0-55D64B93C1EB}|TwoServices\\TwoServices.csproj|solutionrelative:twoservices\\setting\\customercreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 204,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +78,136 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ItemsRepo.cs",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Repositories\\ItemsRepo.cs",
+              "RelativeDocumentMoniker": "UserManagement\\Repositories\\ItemsRepo.cs",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Repositories\\ItemsRepo.cs",
+              "RelativeToolTip": "UserManagement\\Repositories\\ItemsRepo.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T10:37:16.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Entites\\Item.cs",
+              "RelativeDocumentMoniker": "UserManagement\\Entites\\Item.cs",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Entites\\Item.cs",
+              "RelativeToolTip": "UserManagement\\Entites\\Item.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T10:37:08.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\appsettings.json",
+              "RelativeDocumentMoniker": "UserManagement\\appsettings.json",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\appsettings.json",
+              "RelativeToolTip": "UserManagement\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-06T10:37:04.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Views\\Test\\Index.cshtml",
+              "RelativeDocumentMoniker": "UserManagement\\Views\\Test\\Index.cshtml",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Views\\Test\\Index.cshtml",
+              "RelativeToolTip": "UserManagement\\Views\\Test\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-06T10:36:33.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Check.cshtml",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Views\\Test\\Check.cshtml",
+              "RelativeDocumentMoniker": "UserManagement\\Views\\Test\\Check.cshtml",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Views\\Test\\Check.cshtml",
+              "RelativeToolTip": "UserManagement\\Views\\Test\\Check.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-06T10:36:31.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TestController.cs",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Controllers\\TestController.cs",
+              "RelativeDocumentMoniker": "UserManagement\\Controllers\\TestController.cs",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Controllers\\TestController.cs",
+              "RelativeToolTip": "UserManagement\\Controllers\\TestController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T10:35:50.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Program.cs",
+              "RelativeDocumentMoniker": "UserManagement\\Program.cs",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Program.cs",
+              "RelativeToolTip": "UserManagement\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T10:35:35.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "UserManagement\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\UserManagement\\Controllers\\UserController.cs",
+              "RelativeToolTip": "UserManagement\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T10:35:28.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Contracts.cs",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Contracts\\obj\\Contracts.cs",
+              "RelativeDocumentMoniker": "TwoServices\\Contracts\\obj\\Contracts.cs",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Contracts\\obj\\Contracts.cs",
+              "RelativeToolTip": "TwoServices\\Contracts\\obj\\Contracts.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T10:29:53.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Contracts\\Class1.cs",
+              "RelativeDocumentMoniker": "TwoServices\\Contracts\\Class1.cs",
+              "ToolTip": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Contracts\\Class1.cs",
+              "RelativeToolTip": "TwoServices\\Contracts\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T10:29:50.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Program.cs",
               "RelativeDocumentMoniker": "TwoServices\\Program.cs",
@@ -46,12 +215,11 @@
               "RelativeToolTip": "TwoServices\\Program.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T09:29:43.091Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T09:29:43.091Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
               "Title": "RabbitMQSetting.cs",
               "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Setting\\RabbitMQSetting.cs",
               "RelativeDocumentMoniker": "TwoServices\\Setting\\RabbitMQSetting.cs",
@@ -59,12 +227,11 @@
               "RelativeToolTip": "TwoServices\\Setting\\RabbitMQSetting.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T09:29:30.379Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T09:29:30.379Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 13,
               "Title": "CustomersController.cs",
               "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Controllers\\CustomersController.cs",
               "RelativeDocumentMoniker": "TwoServices\\Controllers\\CustomersController.cs",
@@ -77,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 14,
               "Title": "OrdersController.cs",
               "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Controllers\\OrdersController.cs",
               "RelativeDocumentMoniker": "TwoServices\\Controllers\\OrdersController.cs",
@@ -90,7 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "CustomerCreatedConsumer.cs",
               "DocumentMoniker": "C:\\Users\\97254\\source\\repos\\UserManagement\\TwoServices\\Setting\\CustomerCreatedConsumer.cs",
               "RelativeDocumentMoniker": "TwoServices\\Setting\\CustomerCreatedConsumer.cs",
