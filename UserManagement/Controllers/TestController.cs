@@ -12,20 +12,19 @@ namespace UserManagement.Controllers
          interface to create a new item and then retrieve all items from the repository.
          */
         private readonly IItemsRepo r1;
-        private readonly IEmail r2;
         private readonly Manager _manager;
 
-        public TestController(IItemsRepo r1, IEmail r2,Manager manager) // Constructor injection is used to inject the IItemsRepo dependency into the TestController.
+        public TestController(IItemsRepo r1,Manager manager) // Constructor injection is used to inject the IItemsRepo dependency into the TestController.
         {
             this.r1 = r1;
-            this.r2 = r2;
+
             this._manager = manager;
         }
         public async Task<IActionResult> Index()
         
         {
             _manager.Print();
-            r2.Send("ee", "ewew", "ERRQER");
+          
 
             ViewBag.Message = "Hello from TestController1!";
           
@@ -40,6 +39,14 @@ namespace UserManagement.Controllers
                 CreatedDate = DateTime.UtcNow
             });
 
+            await r1.CrearteEmailAsync(new Email
+            {
+                Password = "password",
+                Port = 25,
+                SmtpServer = "smtp.example.com",
+                Username= "username"
+
+            });
            var results=await r1.GetAllAsync();
 
             return View(results);

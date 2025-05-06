@@ -8,8 +8,7 @@ var builder = WebApplication.CreateBuilder(args); // Create a new instance of th
 builder.Services.AddControllersWithViews(); // is used to add MVC services to the container
 
 builder.Services.AddScoped<IItemsRepo, ItemsRepo>(); // Register the IItemsRepo interface and its implementation ItemsRepo with a scoped lifetime, meaning a new instance will be created for each request.
-builder.Services.AddScoped<IEmail, Email>(); // Register the IEmail interface and its implementation Email with a scoped lifetime.
-builder.Services.Configure<ManagerSettings>(builder.Configuration.GetSection("ManagerSettings")); // Bind the ManagerSettings section of the configuration to the ManagerSettings class, allowing access to the settings in the application.
+builder.Services.Configure<ManagerSettings>(builder.Configuration.GetSection("ManagerSettings")); // it create IOptions<ManagerSettings> object that will be used to bind the configuration values from the appsettings.json file to the ManagerSettings class.
 builder.Services.AddSingleton<Manager>();
 
 var app = builder.Build(); // Build the application pipeline and create an instance of the WebApplication class, which represents the application itself.

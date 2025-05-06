@@ -6,21 +6,21 @@ namespace UserManagement.Controllers
 {
     public class UserController : Controller
     {
-        private readonly Email _emailService;
+       
         #region Load Users & index
 
-        public UserController(Email emailService)
+        public UserController()
         {
 
             Console.WriteLine(  "Im from Controller");
-            _emailService = emailService;
+          
         }
         public IActionResult Index()
         {
            
             try
             {
-                _emailService.Send("RWER","rwerwe","REWREW");
+              
                 var users = UserRepository.GetCachedUsers();
                 if (!users.Any())
                 {

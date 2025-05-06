@@ -4,7 +4,7 @@ namespace UserManagement.Models
 {
     public class Manager
     {
-        private readonly ManagerSettings _managerSettings;
+        private readonly ManagerSettings _managerSettings; // This is the settings class that holds the configuration values
 
         public Manager(IOptions<ManagerSettings> managerSettings)
         {
